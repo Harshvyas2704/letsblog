@@ -1,0 +1,32 @@
+{
+  "name": "com.letsblog",
+  "version": "1.0.0",
+  "description": "Blog application for practice",
+  "homepage": "https://github.com/Harshvyas2704/letsblog#readme",
+  "bugs": {
+    "url": "https://github.com/Harshvyas2704/letsblog/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harshvyas2704/letsblog.git"
+  },
+  "license": "ISC",
+  "author": "Harsh Vyas",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -r dotenv/config --experimental-json-modules server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.1",
+    "multer": "^2.0.1"
+  },
+  "devDependencies": {
+    "dotenv": "^17.0.1",
+    "nodemon": "^3.1.10"
+  }
+}
