@@ -1,9 +1,18 @@
 import { User } from "../models/user.model.js";
+import ApiError from "../utils/ApiError.js";
 
 async function isUserExist({ email }) {
-  return await User.findOne({
-    email,
-  });
+  try {
+    return await User.findOne({
+      email,
+    });
+  } catch (error) {
+    throw new ApiError(
+      500,
+      { error },
+      "Something went wrong while checking user exist"
+    );
+  }
 }
 
 async function registerUserService({ fullName, email, bio, password }) {
@@ -15,7 +24,11 @@ async function registerUserService({ fullName, email, bio, password }) {
       password,
     });
   } catch (error) {
-    return null;
+    throw new ApiError(
+      500,
+      { error },
+      "Something went wrong while registing user"
+    );
   }
 }
 
@@ -23,7 +36,11 @@ async function getUserData(_id) {
   try {
     return await User.findById(_id).select("-password -refreshToken");
   } catch (error) {
-    return null;
+    throw new ApiError(
+      500,
+      { error },
+      "Something went wrong while getting user"
+    );
   }
 }
 

@@ -5,6 +5,7 @@ import {
 } from "../services/user.service.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import ApiError from "../utils/ApiError.js";
+import { User } from "../models/user.model.js";
 
 async function registerUserController(req, res) {
   try {
@@ -66,9 +67,31 @@ async function getUserInfo(req, res) {
 
 async function editUserController(req, res) {
   try {
+  } catch (error) {}
+}
+
+async function getToken(req, res) {
+  try {
+    console.log('222');
     
+    const userData = await getUserData(req.body.userId);
+    console.log(userData, '---');
+    
+    const accessToken = await userData.generateAccessToken();
+
+    if (!accessToken) {
+      throw new ApiError(500, error, "Access token not generated");
+    }
+
+    return res
+      .status(200)
+      .json(new ApiResponse(200, { accessToken }, "Access token"));
   } catch (error) {
-    
+    throw new ApiError(
+      500,
+      error,
+      "Something went wrong while generating access token"
+    );
   }
 }
-export { registerUserController, getUserInfo, editUserController };
+export { registerUserController, getUserInfo, editUserController, getToken };
