@@ -63,4 +63,12 @@ async function getUserInfo(req, res) {
       );
   }
 }
-export { registerUserController, getUserInfo };
+
+async function editUserController(req, res) {
+  try {
+    
+  } catch (error) {
+    
+  }
+}
+export { registerUserController, getUserInfo, editUserController };

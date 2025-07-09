@@ -15,7 +15,6 @@ async function authUser(req, res, next) {
     }
 
     const decoded = jwt.verify(accesstoken, process.env.ACCESS_TOKEN_SECRET);
-    console.log(decoded, "decoded");
 
     if (!decoded?._id) {
       return res
