@@ -72,11 +72,8 @@ async function editUserController(req, res) {
 
 async function getToken(req, res) {
   try {
-    console.log('222');
-    
     const userData = await getUserData(req.body.userId);
-    console.log(userData, '---');
-    
+
     const accessToken = await userData.generateAccessToken();
 
     if (!accessToken) {
