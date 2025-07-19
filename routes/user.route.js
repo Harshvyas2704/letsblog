@@ -17,8 +17,6 @@ router
   .post(validateUserRegister, registerUserController);
 router.route("/editUser").post(authUser, editUserController);
 router.route("/getToken").get(function (req, res, next) {
-  console.log('1111');
-  
   if (!req.body) {
     throw new ApiError(401, {}, "Empty request");
   }

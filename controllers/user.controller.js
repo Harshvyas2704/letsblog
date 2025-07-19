@@ -91,4 +91,5 @@ async function getToken(req, res) {
     );
   }
 }
+
 export { registerUserController, getUserInfo, editUserController, getToken };
